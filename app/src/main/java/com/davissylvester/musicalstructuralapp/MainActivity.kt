@@ -7,16 +7,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
+import com.davissylvester.musicalstructuralapp.Adapters.SongAdapter
+import com.davissylvester.musicalstructuralapp.DataService.MusicListingService
+import kotlinx.android.synthetic.main.fragment_artist.*
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val gls: FragmentManager = getSupportFragmentManager()
-
-
-
+    private var gls: FragmentManager = getSupportFragmentManager()
+    private lateinit var mRecycleView: RecyclerView
+    private lateinit var mAdapter: RecyclerView.Adapter<*>
+    private lateinit var mlayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +65,23 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
+        // setDefaults()
+    }
+
+
+
+    private fun setDefaults() {
+
+        mRecycleView = rvArtist
+
+        mRecycleView.apply {
+            setHasFixedSize(true)
+            adapter = mAdapter
+        }
+
+        mlayoutManager = LinearLayoutManager(this)
+        mAdapter = SongAdapter(this, MusicListingService().data)
 
     }
 
