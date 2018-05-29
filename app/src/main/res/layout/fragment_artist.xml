@@ -17,7 +17,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="monospace"
-        android:text="Artist"
+        android:text="@string/song_title"
         android:textSize="30sp"
         android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"

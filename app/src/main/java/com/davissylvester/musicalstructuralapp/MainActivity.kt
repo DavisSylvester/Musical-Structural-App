@@ -1,7 +1,5 @@
 package com.davissylvester.musicalstructuralapp
 
-
-
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -21,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var navMenu: BottomNavigationView = fragBottomNav
-
-        Log.d("Helper", navMenu.toString())
 
         navMenu.setOnNavigationItemSelectedListener { item ->
 
@@ -55,6 +51,10 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
+        val tracks = TracksFragment()
+        startTracksFragment(tracks)
+
 
     }
 

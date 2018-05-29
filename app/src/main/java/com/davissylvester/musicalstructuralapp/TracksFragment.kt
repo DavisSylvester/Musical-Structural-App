@@ -1,6 +1,7 @@
 package com.davissylvester.musicalstructuralapp
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -9,9 +10,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.davissylvester.musicalstructuralapp.Activities.ArtistDetail
 import com.davissylvester.musicalstructuralapp.Adapters.ArtistAdapter
 import com.davissylvester.musicalstructuralapp.DataService.MusicListingService
-
 
 
 class TracksFragment : Fragment() {
@@ -35,10 +36,14 @@ class TracksFragment : Fragment() {
 
         mRecycleView = view.findViewById(R.id.rvTracks)
 
-        mAdapter = ArtistAdapter(context, data) {
-            artist -> run {
-            Log.d("Helper", "${artist.StageName}")
-        }
+        mAdapter = ArtistAdapter(context, data) { artist ->
+            run {
+
+                val intent = Intent(context, ArtistDetail::class.java).apply {
+                    putExtra("Artist", artist)
+                }
+                startActivity(intent)
+            }
         }
 
         mlayoutManager = GridLayoutManager(context, 3)
