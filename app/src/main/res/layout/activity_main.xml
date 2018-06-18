@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/fgmNavMenu"
-        android:name="com.davissylvester.musicalstructuralapp.BlankFragment"
+        android:name="com.davissylvester.musicalstructuralapp.Fragmenets.BlankFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

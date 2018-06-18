@@ -1,13 +1,12 @@
-package com.davissylvester.musicalstructuralapp
+package com.davissylvester.musicalstructuralapp.Fragmenets
 
 
 import android.os.Bundle
-import android.support.design.internal.BottomNavigationMenu
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.davissylvester.musicalstructuralapp.R
 
 
 // TODO: Rename parameter arguments, choose names that match

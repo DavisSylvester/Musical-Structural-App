@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentManager
 import android.util.Log
+import com.davissylvester.musicalstructuralapp.Fragmenets.ArtistFragment
+import com.davissylvester.musicalstructuralapp.Fragmenets.TracksFragment
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 

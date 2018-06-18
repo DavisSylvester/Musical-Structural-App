@@ -1,8 +1,7 @@
-package com.davissylvester.musicalstructuralapp
+package com.davissylvester.musicalstructuralapp.Fragmenets
 
 
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -12,8 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.davissylvester.musicalstructuralapp.Adapters.SongAdapter
 import com.davissylvester.musicalstructuralapp.DataService.MusicListingService
-import com.davissylvester.musicalstructuralapp.DataService.Song
-import kotlinx.android.synthetic.main.fragment_artist.*
+import com.davissylvester.musicalstructuralapp.R
 
 
 // TODO: Rename parameter arguments, choose names that match

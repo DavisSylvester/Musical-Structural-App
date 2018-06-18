@@ -1,4 +1,4 @@
-package com.davissylvester.musicalstructuralapp
+package com.davissylvester.musicalstructuralapp.Fragmenets
 
 
 import android.content.Intent
@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.davissylvester.musicalstructuralapp.Activities.ArtistDetail
 import com.davissylvester.musicalstructuralapp.Adapters.ArtistAdapter
 import com.davissylvester.musicalstructuralapp.DataService.MusicListingService
+import com.davissylvester.musicalstructuralapp.R
 
 
 class TracksFragment : Fragment() {

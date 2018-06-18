@@ -1,18 +1,22 @@
 package com.davissylvester.musicalstructuralapp.Activities
 
 
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
+import android.view.View
 import com.davissylvester.musicalstructuralapp.Adapters.ArtistProfileAdapter
 import com.davissylvester.musicalstructuralapp.DataService.Artist
 import com.davissylvester.musicalstructuralapp.DataService.MusicListingService
 import com.davissylvester.musicalstructuralapp.DataService.Song
+import com.davissylvester.musicalstructuralapp.DomainClasses.API_KEY
 import com.davissylvester.musicalstructuralapp.R
+import com.davissylvester.musicalstructuralapp.R.id.vPlayer
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener
+import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import kotlinx.android.synthetic.main.activity_artist_detail.*
 
 
@@ -21,6 +25,11 @@ class ArtistDetail : AppCompatActivity() {
     private lateinit var mRecycleView: RecyclerView
     private lateinit var mAdapter: RecyclerView.Adapter<*>
     private lateinit var mlayoutManager: RecyclerView.LayoutManager
+
+    private lateinit var vv: YouTubePlayerSupportFragment
+    private lateinit var youTubeListener: OnInitializedListener
+    private lateinit var player: YouTubePlayer
+    private var artistDetail = this
 
     private lateinit var data: MutableList<Song>
 
@@ -36,16 +45,22 @@ class ArtistDetail : AppCompatActivity() {
 
         setDefaults(artist.StageName)
 
+
     }
 
     private fun setDefaults(stageName: String) {
+
+        vv = vPlayer as YouTubePlayerSupportFragment
+
+        youTubePlayerInit()
+
+        vv.initialize(API_KEY, youTubeListener);
 
         mRecycleView = findViewById(R.id.rvSongs)
 
         mAdapter = ArtistProfileAdapter(this, data)  {
 
-            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.Url))
-            startActivity(intent)
+            PlayVideo(it.Url)
 
         }
 
@@ -79,5 +94,34 @@ class ArtistDetail : AppCompatActivity() {
             song.Artist.StageName == stageName
 
         }.toMutableList()
+    }
+
+    private fun youTubePlayerInit() {
+
+        youTubeListener = object: OnInitializedListener {
+            override fun onInitializationFailure(p0: YouTubePlayer.Provider?, p1: YouTubeInitializationResult?) {
+
+            }
+
+            override fun onInitializationSuccess(provider: YouTubePlayer.Provider,
+                                                 youTubePlayer: YouTubePlayer, b: Boolean) {
+                player = youTubePlayer
+
+                PlayVideo(data[0].Url)
+
+
+            }
+
+        }
+
+    }
+
+    fun PlayVideo(songUrl: String?) {
+
+        player.loadVideo(songUrl)
+    }
+
+    fun goBack(view: View) {
+        this.finish()
     }
 }

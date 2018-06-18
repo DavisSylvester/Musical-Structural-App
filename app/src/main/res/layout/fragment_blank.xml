@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="65dp"
-    tools:context=".BlankFragment">
+    tools:context=".Fragmenets.BlankFragment">
 
 
     <android.support.design.widget.BottomNavigationView
